@@ -5,7 +5,7 @@
 ## Como iniciar este projeto
 
 ```bash
-git clone https://github.com/AislanDias/Surgery-Orders.git
+git clone https://github.com/AislanNeves/Pedidos-Cirurgicos.git
 
 # Entrar na pasta do repositorio
 cd Surgery-Orders/
