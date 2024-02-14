@@ -1,0 +1,103 @@
+@baseUrl = http://localhost:3443
+
+# @name create_surgery_orders
+POST {{baseUrl}}/surgery-orders
+Content-Type: application/json
+
+{
+    "roomId" : 1,
+    "hospitalId": 1,
+    "proceduresId" : 1,
+    "doctor" : "Doutor Hortolino",
+    "patient" : "Paulo Bezerra",
+    "surgeryDate" : "2024-12-19T00:00:00.000Z",
+    "observations" : "Alergico à dipirona"
+}
+
+
+###
+
+# @name update_surgery_orders
+PUT {{baseUrl}}/surgery-orders
+Content-Type: application/json
+
+{
+    "id": 1,
+    "roomId" : 1,
+    "proceduresId" : 1,
+    "doctor" : "Doutor Hortolino",
+    "patient" : "Paulo Bezerra",
+    "surgeryDate" : "2024-02-13T00:00:00.000Z",
+    "observations" : "Alergico à ibuprofeno"
+}
+
+
+###
+
+# @name get_surgery_orders
+GET {{baseUrl}}/surgery-orders/?page=1
+Content-Type: application/json
+
+
+###
+
+# @name delete_surgery_orders
+DELETE {{baseUrl}}/surgery-orders/?surgeryOrderId=8
+Content-Type: application/json
+
+###
+
+# @name create_hospitals
+POST {{baseUrl}}/hospitals
+Content-Type: application/json
+
+{
+    "name": "Hospital de Amor"
+}
+
+
+###
+
+# @name get_hospitals
+GET {{baseUrl}}/hospitals
+Content-Type: application/json
+
+
+###
+
+# @name create_rooms
+POST {{baseUrl}}/rooms
+Content-Type: application/json
+
+{
+    "hospitalId": 1,
+    "name": "Sala 001"
+}
+
+
+###
+
+# @name get_rooms
+GET {{baseUrl}}/rooms/?hospitalId=1
+Content-Type: application/json
+
+
+###
+
+# @name create_procedures
+POST {{baseUrl}}/procedures
+Content-Type: application/json
+
+{
+    "name": "Radiofrequencia"
+}
+
+
+###
+
+# @name get_procedures
+GET {{baseUrl}}/procedures
+Content-Type: application/json
+
+
+###

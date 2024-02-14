@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SurgeryOrder {
+  id           Int      @id @default(autoincrement())
+  roomId       Int      @map("room_id")
+  hospitalId   Int      @map("hospital_id")
+  proceduresId Int      @map("procedures_id")
+  doctor       String
+  patient      String
+  surgeryDate  DateTime @map("surgery_date")
+  created_at   DateTime @default(now()) @map("created_at")
+  observations String   @default("N/C")
+
+  room      Room       @relation(fields: [roomId], references: [id])
+  procedure Procedures @relation(fields: [proceduresId], references: [id])
+  hospital  Hospital   @relation(fields: [hospitalId], references: [id])
+}
+
+model Procedures {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  SurgeryOrder SurgeryOrder[]
+}
+
+model Room {
+  id         Int    @id @default(autoincrement())
+  hospitalId Int    @map("hospital_id")
+  name       String
+
+  SurgeryOrder SurgeryOrder[]
+  Hospital     Hospital       @relation(fields: [hospitalId], references: [id])
+}
+
+model Hospital {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  room         Room[]
+  SurgeryOrder SurgeryOrder[]
+}
